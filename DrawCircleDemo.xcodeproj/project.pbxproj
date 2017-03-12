@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1FDE881E655ECC00CAB003 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1FDE871E655ECC00CAB003 /* GraphView.swift */; };
 		5F2067F31E617831000BC872 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2067F21E617831000BC872 /* AppDelegate.swift */; };
 		5F2067F51E617831000BC872 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2067F41E617831000BC872 /* ViewController.swift */; };
 		5F2067F81E617831000BC872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2067F61E617831000BC872 /* Main.storyboard */; };
 		5F2067FA1E617831000BC872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F2067F91E617831000BC872 /* Assets.xcassets */; };
 		5F2067FD1E617831000BC872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2067FB1E617831000BC872 /* LaunchScreen.storyboard */; };
+		5F31E9CE1E65D5E50061B009 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F31E9CD1E65D5E50061B009 /* MapKit.framework */; };
+		5F7E49501E67F41D00785BCD /* DrawCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E494F1E67F41D00785BCD /* DrawCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F1FDE871E655ECC00CAB003 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		5F2067EF1E617831000BC872 /* DrawCircleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawCircleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F2067F21E617831000BC872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F2067F41E617831000BC872 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		5F2067F91E617831000BC872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F2067FC1E617831000BC872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F2067FE1E617831000BC872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F31E9CD1E65D5E50061B009 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5F7E494F1E67F41D00785BCD /* DrawCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F31E9CE1E65D5E50061B009 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,7 @@
 			children = (
 				5F2067F11E617831000BC872 /* DrawCircleDemo */,
 				5F2067F01E617831000BC872 /* Products */,
+				5F31E9CC1E65D5E50061B009 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				5F2067F21E617831000BC872 /* AppDelegate.swift */,
+				5F1FDE871E655ECC00CAB003 /* GraphView.swift */,
+				5F7E494F1E67F41D00785BCD /* DrawCircle.swift */,
 				5F2067F41E617831000BC872 /* ViewController.swift */,
 				5F2067F61E617831000BC872 /* Main.storyboard */,
 				5F2067F91E617831000BC872 /* Assets.xcassets */,
@@ -62,6 +72,14 @@
 				5F2067FE1E617831000BC872 /* Info.plist */,
 			);
 			path = DrawCircleDemo;
+			sourceTree = "<group>";
+		};
+		5F31E9CC1E65D5E50061B009 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F31E9CD1E65D5E50061B009 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,7 +114,13 @@
 				TargetAttributes = {
 					5F2067EE1E617831000BC872 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7Y55XY9K89;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -138,6 +162,8 @@
 			files = (
 				5F2067F51E617831000BC872 /* ViewController.swift in Sources */,
 				5F2067F31E617831000BC872 /* AppDelegate.swift in Sources */,
+				5F1FDE881E655ECC00CAB003 /* GraphView.swift in Sources */,
+				5F7E49501E67F41D00785BCD /* DrawCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7Y55XY9K89;
 				INFOPLIST_FILE = DrawCircleDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.reasonamu.DrawCircleDemo;
@@ -272,6 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7Y55XY9K89;
 				INFOPLIST_FILE = DrawCircleDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.reasonamu.DrawCircleDemo;
@@ -299,6 +327,7 @@
 				5F2068031E617831000BC872 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
