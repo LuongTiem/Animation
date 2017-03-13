@@ -28,8 +28,8 @@ class DrawCircle: UIView {
         super.draw(rect)
         //        setupUI()
         //        setupUI2()
-        //        testDraw()
-        test()
+                testDraw()
+//        test()
         
     }
     
