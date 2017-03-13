@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,18 +31,18 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtD-ph-fFC" customClass="Battery" customModule="DrawCircleDemo" customModuleProvider="target">
-                                <rect key="frame" x="599" y="337" width="60" height="30"/>
+                                <rect key="frame" x="459" y="278.5" width="200" height="88.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="5UD-RI-ovD"/>
-                                    <constraint firstAttribute="height" constant="30" id="ybh-Ce-pzU"/>
+                                    <constraint firstAttribute="width" secondItem="TtD-ph-fFC" secondAttribute="height" multiplier="9:4" id="cnz-9E-RLz"/>
+                                    <constraint firstAttribute="width" constant="200" id="lPT-hY-jny"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TtD-ph-fFC" secondAttribute="bottom" constant="8" id="kP8-Xv-wpJ"/>
-                            <constraint firstAttribute="trailing" secondItem="TtD-ph-fFC" secondAttribute="trailing" constant="8" id="oi4-Vg-47H"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TtD-ph-fFC" secondAttribute="bottom" constant="8" id="5HA-xe-EcP"/>
+                            <constraint firstAttribute="trailing" secondItem="TtD-ph-fFC" secondAttribute="trailing" constant="8" id="gq3-mn-HIy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5f3-Ls-fHM" secondAttribute="bottom" constant="20" id="tyV-EL-5Jh"/>
                             <constraint firstItem="5f3-Ls-fHM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="334" id="wTQ-1S-jYU"/>
                         </constraints>
