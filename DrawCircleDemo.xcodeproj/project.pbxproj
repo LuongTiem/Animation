@@ -16,7 +16,8 @@
 		5F2067FD1E617831000BC872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2067FB1E617831000BC872 /* LaunchScreen.storyboard */; };
 		5F31E9CE1E65D5E50061B009 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F31E9CD1E65D5E50061B009 /* MapKit.framework */; };
 		5F7E49501E67F41D00785BCD /* DrawCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E494F1E67F41D00785BCD /* DrawCircle.swift */; };
-		5FF0D38A1E762DA70049F6FE /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0D3891E762DA70049F6FE /* Battery.swift */; };
+		5FDE814A1E77CA4900134DCD /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDE81491E77CA4900134DCD /* Battery.swift */; };
+		5FDE814C1E77CDF100134DCD /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDE814B1E77CDF100134DCD /* Address.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +32,8 @@
 		5F2067FE1E617831000BC872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F31E9CD1E65D5E50061B009 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5F7E494F1E67F41D00785BCD /* DrawCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCircle.swift; sourceTree = "<group>"; };
-		5FF0D3891E762DA70049F6FE /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		5FDE81491E77CA4900134DCD /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		5FDE814B1E77CDF100134DCD /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,8 @@
 				5F7E494F1E67F41D00785BCD /* DrawCircle.swift */,
 				5F2067F41E617831000BC872 /* ViewController.swift */,
 				5F1EB9981E75B60500BD35CD /* CABasicAnimation.swift */,
-				5FF0D3891E762DA70049F6FE /* Battery.swift */,
+				5FDE814B1E77CDF100134DCD /* Address.swift */,
+				5FDE81491E77CA4900134DCD /* Battery.swift */,
 				5F2067F61E617831000BC872 /* Main.storyboard */,
 				5F2067F91E617831000BC872 /* Assets.xcassets */,
 				5F2067FB1E617831000BC872 /* LaunchScreen.storyboard */,
@@ -169,9 +172,10 @@
 				5F2067F51E617831000BC872 /* ViewController.swift in Sources */,
 				5F2067F31E617831000BC872 /* AppDelegate.swift in Sources */,
 				5F1FDE881E655ECC00CAB003 /* GraphView.swift in Sources */,
-				5FF0D38A1E762DA70049F6FE /* Battery.swift in Sources */,
+				5FDE814A1E77CA4900134DCD /* Battery.swift in Sources */,
 				5F7E49501E67F41D00785BCD /* DrawCircle.swift in Sources */,
 				5F1EB9991E75B60500BD35CD /* CABasicAnimation.swift in Sources */,
+				5FDE814C1E77CDF100134DCD /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

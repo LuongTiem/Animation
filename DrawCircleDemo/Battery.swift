@@ -15,34 +15,22 @@ class Battery: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-    }
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(batteryLevelDidChange), name: NSNotification.Name.UIDeviceBatteryLevelDidChange, object: nil)
         fillBattery()
-        
-        
+        setupUI()
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-         print(print(self.bounds.minX))
-         print(print(self.bounds.maxX))
-    }
-    
     
     let batteryLayer : CAShapeLayer = CAShapeLayer()
     let halfCircleLayer  : CAShapeLayer = CAShapeLayer()
+    var batteryFillPath : UIBezierPath!
+    var fillLayer : CAShapeLayer!
     let klineWidth : CGFloat = 1.5
+    var distance : CGFloat = 0.0
     
     func setupUI() {
         let boundCircle : CGFloat = self.bounds.width/10
-        let roundShape : CGFloat = self.bounds.height/16
+        let roundShape : CGFloat = self.bounds.height/20
         let batteryPath = UIBezierPath()
         let point1 = CGPoint(x: self.bounds.minX + 2, y: self.bounds.minY + 3 + roundShape)
         let point2 = CGPoint(x: self.bounds.minX + 3 + roundShape , y: self.bounds.minY + 3)
@@ -78,31 +66,101 @@ class Battery: UIView {
         halfCircleLayer.strokeColor = nil
         halfCircleLayer.fillColor = UIColor.white.cgColor
         self.layer.addSublayer(halfCircleLayer)
+        distance = distance(point1: point1, point2: point4)
     }
     
     func fillBattery() {
-        let fillLayer : CAShapeLayer = CAShapeLayer()
-        let roundShape : CGFloat = self.bounds.height/16
-        let batteryFillPath = UIBezierPath()
+        fillLayer =  CAShapeLayer()
+        batteryFillPath = UIBezierPath()
+        let roundShape : CGFloat = self.bounds.height/20
+        let boundCircle : CGFloat = self.bounds.width/10
         let point1 = CGPoint(x: self.bounds.minX + 2, y: self.bounds.minY + 3 + roundShape)
         let point2 = CGPoint(x: self.bounds.minX + 3 + roundShape , y: self.bounds.minY + 3)
-        let point3 = CGPoint(x: point2.x  + 20, y: point2.y)
-        let point4 = CGPoint(x: point3.x, y: self.bounds.maxY - klineWidth - 2 )
-        let point5 = CGPoint(x: self.bounds.minX + 3 + roundShape, y: point4.y)
-        let point6 = CGPoint(x: self.bounds.minX + 2, y: point5.y - roundShape)
+        var point3 = CGPoint(x:  point1.x  + distance/100 * 10, y: point2.y)
+        let point4 = CGPoint(x: self.bounds.maxX - boundCircle, y: self.bounds.minY + 3 + roundShape)
+        let point5 = CGPoint(x: self.bounds.maxX - boundCircle, y: self.bounds.maxY - klineWidth - roundShape - 2 )
+        var point6 = CGPoint(x: point3.x, y: self.bounds.maxY - klineWidth - 2 )
+        let point7 = CGPoint(x: self.bounds.minX + 3 + roundShape, y: self.bounds.maxY - klineWidth - 2)
+        let point8 = CGPoint(x: self.bounds.minX + 2, y: point7.y - roundShape)
+        
+        /// add point static
         batteryFillPath.move(to: point1)
         batteryFillPath.addLine(to: point2)
-        batteryFillPath.addLine(to: point3)
-        batteryFillPath.addLine(to: point4)
-        batteryFillPath.addLine(to: point5)
-        batteryFillPath.addLine(to: point6)
-        batteryFillPath.close()
         
+        //-- check battery
+        let batteryLevel : Float =   abs(UIDevice.current.batteryLevel)  * 100.0
+        if CGFloat(batteryLevel) <= 10 {
+            point3 = CGPoint(x: point1.x  + distance/100 * 10 , y: point2.y)
+            point6 = CGPoint(x: point3.x, y: self.bounds.maxY - klineWidth - 2)
+            batteryFillPath.addLine(to: point3)
+            batteryFillPath.addLine(to: point6)
+            batteryFillPath.addLine(to: point7)
+            batteryFillPath.addLine(to: point8)
+            
+        }
+        else if CGFloat (batteryLevel) >= 90 {
+            point3 = CGPoint(x: self.bounds.maxX - boundCircle - roundShape, y: self.bounds.minY + 3)
+            point6 = CGPoint(x: self.bounds.maxX - boundCircle - roundShape, y: self.bounds.maxY - klineWidth - 2)
+            batteryFillPath.addLine(to: point3)
+            batteryFillPath.addLine(to: point4)
+            batteryFillPath.addLine(to: point5)
+            batteryFillPath.addLine(to: point6)
+            batteryFillPath.addLine(to: point7)
+            batteryFillPath.addLine(to: point8)
+        }
+        else {
+            point3 = CGPoint(x: point1.x  + distance/100 * CGFloat(batteryLevel) , y: point2.y)
+            point6 = CGPoint(x: point3.x, y: self.bounds.maxY - klineWidth - 2)
+            batteryFillPath.addLine(to: point3)
+            batteryFillPath.addLine(to: point6)
+            batteryFillPath.addLine(to: point7)
+            batteryFillPath.addLine(to: point8)
+        }
+        
+        batteryFillPath.close()
         fillLayer.path = batteryFillPath.cgPath
         fillLayer.lineWidth = klineWidth
         fillLayer.strokeColor = nil
         fillLayer.fillColor  = UIColor.white.cgColor
         self.layer.addSublayer(fillLayer)
+        self.updateFocusIfNeeded()
+    }
+    
+    /// distance
+    func distance (point1: CGPoint , point2 : CGPoint) -> CGFloat {
+        return CGFloat(hypotf(Float(point1.x) - Float(point2.x), Float(point1.y) - Float(point2.y)))
     }
     
 }
+
+extension Battery {
+    
+    func batteryLevelDidChange() {
+        batteryFillPath.removeAllPoints()
+        fillLayer.removeFromSuperlayer()
+        fillBattery()
+    }
+}
+
+/*
+ struct getBattery {
+ private static var device : UIDevice {
+ get {
+ let dev = UIDevice.current
+ dev.isBatteryMonitoringEnabled = true
+ return dev
+ }
+ }
+ 
+ /// The current level of the battery
+ public static var level: Float? {
+ 
+ let batteryCharge = device.batteryLevel
+ if batteryCharge > 0 {
+ return batteryCharge * 100
+ } else {
+ return nil
+ }
+ }
+ }
+ */

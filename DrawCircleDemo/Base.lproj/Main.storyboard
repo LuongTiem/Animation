@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,12 +39,22 @@
                                     <constraint firstAttribute="width" constant="200" id="lPT-hY-jny"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdT-0C-EOU" customClass="Address" customModule="DrawCircleDemo" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="222.5" height="74"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bdT-0C-EOU" secondAttribute="height" multiplier="3:1" id="7De-Gw-LfR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bdT-0C-EOU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:3" id="34d-ez-65d"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TtD-ph-fFC" secondAttribute="bottom" constant="8" id="5HA-xe-EcP"/>
                             <constraint firstAttribute="trailing" secondItem="TtD-ph-fFC" secondAttribute="trailing" constant="8" id="gq3-mn-HIy"/>
+                            <constraint firstItem="bdT-0C-EOU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="kq2-wK-MUR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5f3-Ls-fHM" secondAttribute="bottom" constant="20" id="tyV-EL-5Jh"/>
+                            <constraint firstItem="bdT-0C-EOU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="v6I-MQ-UY9"/>
                             <constraint firstItem="5f3-Ls-fHM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="334" id="wTQ-1S-jYU"/>
                         </constraints>
                     </view>
